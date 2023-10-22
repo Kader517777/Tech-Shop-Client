@@ -36,6 +36,10 @@ const router = createBrowserRouter([
         path: '/home/:brand',
         element: <BrandPage></BrandPage>
       },
+      {
+        path: '/home/details/:brand',
+        element: <p>fjglsj</p>
+      },
     ]
   },
 ]);
