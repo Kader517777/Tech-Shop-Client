@@ -12,7 +12,7 @@ const AddProduct = () => {
         const Rating = form.rating?.value;
         const shortDescription = form.shortDescription?.value;
         const detailsDescription = form.detailsDescription?.value;
-        console.log(name, image, brandName, catagoryName, price, Rating, shortDescription, detailsDescription);
+        e.target.reset();
 
         const products = { name, image, brandName, catagoryName, price, Rating, shortDescription, detailsDescription }
 
@@ -56,8 +56,8 @@ const AddProduct = () => {
                             <span>Catagory</span>
                             <select className="select select-bordered" name="selectCatagory">
                                 <option disabled selected>Pick category</option>
-                                <option>T-shirts</option>
-                                <option>Mugs</option>
+                                <option>Phone</option>
+                                <option>Computer</option>
                             </select>
 
                         </div>
@@ -87,7 +87,7 @@ const AddProduct = () => {
                         <textarea className="textarea textarea-success" name="detailsDescription" placeholder="details Description"></textarea>
                     </label>
                 </div>
-                <button type="submit" className="btn btn-primary w-full">Add Prodeuct</button>
+                <button type="submit" className="btn btn-primary w-full">Add</button>
             </form>
         </div>
     );

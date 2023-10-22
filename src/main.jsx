@@ -8,6 +8,7 @@ import {
 import MainLayout from './layout/MainLayout';
 import AddProduct from './pages/AddProduct/AddProduct';
 import Home from './pages/Home/Home';
+import BrandPage from './pages/BrandPage/BrandPage';
 
 
 const router = createBrowserRouter([
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <p>sjdfnhksjhg v</p>
+      },
+      {
+        path: '/home/:brand',
+        element: <BrandPage></BrandPage>
       },
     ]
   },
