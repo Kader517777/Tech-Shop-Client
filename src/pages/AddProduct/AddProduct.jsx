@@ -44,7 +44,7 @@ const AddProduct = () => {
                         <input type="text" placeholder="Please Product name" name="image" className="input input-bordered" />
                     </label>
                 </div>
-                <div className="flex justify-between w-full">
+                <div className="md:flex justify-between w-full items-center">
                     <div className="form-control ">
                         <label className="input-group ">
                             <span>Brand name</span>

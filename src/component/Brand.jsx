@@ -1,33 +1,17 @@
+import { Link } from "react-router-dom";
 
-
-const Brand = () => {
-
-    const handlebrand = (e) => {
-        e.preventDefault();
-        const name = e.target.name.value;
-        const img = e.target.img.value;
-        console.log(name, img);
-        const products = {
-            name, img
-        }
-        fetch('http://localhost:3600/brands', {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            },
-            body: JSON.stringify(products)
-        })
-            .then(res => res.json())
-            .then(data => console.log(data))
-    }
+/* eslint-disable */
+const Brand = ({ brand }) => {
+    console.log(brand.name);
     return (
-        <div>
-            <form onSubmit={handlebrand}>
-                <input type="text" name="name" id="" placeholder="name" className="w-full border-4" />
-                <input type="text" name="img" id="" className="w-full border-4" />
-                <button type="submit">submit</button>
-            </form>
-        </div>
+        <Link to={brand.name}>
+            <div className="card bg-base-100 shadow-2xl">
+                <figure><img className="h-[300px] bg-base-100" src={brand.img} alt="Shoes" /></figure>
+                <div className="card-body">
+                    <h2 className="card-title text-3xl justify-center">{brand.name}</h2>
+                </div>
+            </div>
+        </Link>
     );
 };
 
