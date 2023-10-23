@@ -4,7 +4,10 @@ import { userContext } from "../Provider/AuthContext";
 
 const Navber = () => {
     const { user, signUp } = useContext(userContext);
-
+    const userName = user?.auth?.currentUser?.displayName;
+    const email = user?.auth?.currentUser?.email;
+    const photoURL = user?.auth?.currentUser?.photoURL;
+    console.log(userName);
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -57,8 +60,20 @@ const Navber = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {!user ? <Link className="btn text-3xl" to='login'>Login</Link> :
-                    <Link onClick={() => signUp()} className="btn text-3xl" to='/'>LogOut</Link>}
+                {!user ? <Link className="btn text-3xl mr-0 md:mr-6" to='login'>Login</Link> :
+                    <div className=" flex justify-center items-center">
+                        {userName ? <h1 className="hidden md:flex text-xl">{userName}</h1>
+                            : <h1 className="hidden md:flex text-2xl mx-0 md:mx-3">{email}</h1>}
+                        {photoURL && <div className="avatar mx-0 md:mx-3">
+                            <div className="w-12 rounded-full">
+                                <img src={photoURL} />
+                            </div>
+                        </div>}
+                        <Link onClick={() => signUp()} className="btn text-3xl mr-0 md:mr-6" to='/'>LogOut</Link>
+                    </div>
+
+
+                }
             </div>
         </div>
     );
