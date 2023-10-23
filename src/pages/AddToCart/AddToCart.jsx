@@ -18,7 +18,7 @@ const AddToCart = () => {
     }, [userEmail])
 
     const handleProductDelete = (id) => {
-        fetch(`http://localhost:3600/delete/${id}`, {
+        fetch(`https://tech-shope-server-c8xh3rl03-shakhabdulkader2020-gmailcom.vercel.app/delete/${id}`, {
             method: "Delete",
         })
             .then(res => res.json())

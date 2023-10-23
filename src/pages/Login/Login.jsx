@@ -37,7 +37,8 @@ const Login = () => {
             .then(() => {
                 toast.success('Successfully Login!!');
             })
-            .then(() => {
+            .then((error) => {
+                console.log(error);
             })
     }
     return (

@@ -13,7 +13,7 @@ const Details = () => {
 
     console.log(product?.image);
     useEffect(() => {
-        fetch('http://localhost:3600/products')
+        fetch('https://tech-shope-server-c8xh3rl03-shakhabdulkader2020-gmailcom.vercel.app/products')
             .then(res => res.json())
             .then(data => setDetailsProduct(data))
     }, [])
@@ -25,7 +25,7 @@ const Details = () => {
         const cardInfo = {
             _id, name, image, brandName, catagoryName, price, userEmail
         };
-        fetch('http://localhost:3600/cart', {
+        fetch('https://tech-shope-server-c8xh3rl03-shakhabdulkader2020-gmailcom.vercel.app/cart', {
             method: "POST",
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
