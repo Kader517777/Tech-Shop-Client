@@ -1,36 +1,41 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { userContext } from "../../Provider/AuthContext";
+import toast from "react-hot-toast";
 
 const Details = () => {
+    const { user } = useContext(userContext);
+    const userEmail = user?.auth?.currentUser?.email;
     const id = useParams();
-    const [__id, set__id] = useState(id)
     const [detailsProduct, setDetailsProduct] = useState(null);
-    if (__id) {
-        fetch('http://localhost:3600/products')
-            .then(res => res.json())
-            .then(data => setDetailsProduct(data))
-    }
 
     const product = detailsProduct?.find(item => item?._id == id?.brand);
 
     console.log(product?.image);
-    fetch('http://localhost:3600/products')
-        .then(res => res.json())
-        .then(data => setDetailsProduct(data))
+    useEffect(() => {
+        fetch('http://localhost:3600/products')
+            .then(res => res.json())
+            .then(data => setDetailsProduct(data))
+    }, [])
 
 
     const handleUserAddToCart = (card) => {
+
+        const { _id, name, image, brandName, catagoryName, price } = card;
+        const cardInfo = {
+            _id, name, image, brandName, catagoryName, price, userEmail
+        };
         fetch('http://localhost:3600/cart', {
             method: "POST",
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
             },
-            body: JSON.stringify(card)
+            body: JSON.stringify(cardInfo)
         })
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged === true) {
-                    console.log('data submited');
+                    toast.success('Successfully Add TO Cart!!!')
                 }
             })
     }

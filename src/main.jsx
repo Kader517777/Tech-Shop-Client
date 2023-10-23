@@ -12,6 +12,10 @@ import BrandPage from './pages/BrandPage/BrandPage';
 import Details from './pages/Details/Details';
 import AddToCart from './pages/AddToCart/AddToCart';
 import Updated from './pages/Updated/Updated';
+import AuthContext from './Provider/AuthContext';
+import Login from './pages/Login/Login';
+import Resigtration from './pages/Resigtration/Resigtration';
+import PrivateRoute from './Route/PrivateRoute';
 
 
 const router = createBrowserRouter([
@@ -25,15 +29,17 @@ const router = createBrowserRouter([
       },
       {
         path: 'addproduct',
-        element: <AddProduct></AddProduct>
-      },
-      {
-        path: 'mycart',
-        element: <p>sjdfnhksjhg v</p>
+        element: <PrivateRoute>
+          <AddProduct></AddProduct>
+        </PrivateRoute>
       },
       {
         path: 'login',
-        element: <p>sjdfnhksjhg v</p>
+        element: <Login></Login>
+      },
+      {
+        path: 'resigtration',
+        element: <Resigtration></Resigtration>
       },
       {
         path: '/home/:brand',
@@ -41,15 +47,21 @@ const router = createBrowserRouter([
       },
       {
         path: '/home/details/:brand',
-        element: <Details></Details>
+        element: <PrivateRoute>
+          <Details></Details>
+        </PrivateRoute>
       },
       {
         path: '/cart',
-        element: <AddToCart></AddToCart>
+        element: <PrivateRoute>
+          <AddToCart></AddToCart>
+        </PrivateRoute>
       },
       {
         path: '/updated/:id',
-        element: <Updated></Updated>
+        element: <PrivateRoute>
+          <Updated></Updated>
+        </PrivateRoute>
       },
     ]
   },
@@ -59,6 +71,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthContext>
+      <RouterProvider router={router} />
+    </AuthContext>
   </React.StrictMode>
 );

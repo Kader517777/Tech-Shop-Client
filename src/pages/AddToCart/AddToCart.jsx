@@ -1,15 +1,21 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Carts from "../../component/Carts";
+import { userContext } from "../../Provider/AuthContext";
 
 
 const AddToCart = () => {
+    const { user } = useContext(userContext)
+    const userEmail = user?.auth?.currentUser?.email;
     const [cartProduct, setCartProduct] = useState(null);
     console.log(cartProduct);
     useEffect(() => {
         fetch('http://localhost:3600/cart')
             .then(res => res.json())
-            .then(data => setCartProduct(data))
-    }, [])
+            .then(data => {
+                const filterUserCart = data?.filter(item => item.userEmail === userEmail)
+                setCartProduct(filterUserCart);
+            })
+    }, [userEmail])
 
     const handleProductDelete = (id) => {
         fetch(`http://localhost:3600/delete/${id}`, {
@@ -19,7 +25,7 @@ const AddToCart = () => {
             .then(data => {
                 if (data.deletedCount > 0) {
                     console.log(cartProduct);
-                    const filter = cartProduct?.filter(item => item._id != id);
+                    const filter = cartProduct?.filter(item => item._id != id && item.userEmail == userEmail);
                     console.log(filter);
                     setCartProduct(filter);
                 }

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const BrandProduct = ({ brandProduct }) => {
 
-    const { name, image, brandName, catagoryName, price, Rating, shortDescription, detailsDescription, _id } = brandProduct;
+    const { _id, name, image, brandName, catagoryName, price, Rating, shortDescription, detailsDescription } = brandProduct;
 
     return (
         <div className="card bg-base-100 shadow-xl">
