@@ -41,7 +41,7 @@ const Navber = () => {
                         Add Product
                     </NavLink></li>
                     <li><NavLink
-                        to="/mycart"
+                        to="/cart"
                         className={({ isActive, isPending }) =>
                             isPending ? "pending text-2xl font-bold" : isActive ? "active text-2xl font-bold" : "text-2xl font-bold"
                         }

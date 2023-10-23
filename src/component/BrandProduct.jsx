@@ -15,7 +15,7 @@ const BrandProduct = ({ brandProduct }) => {
                 <p>Rating: {Rating}</p>
                 <div className="card-actions justify-center">
                     <Link className="w-full" to={`/home/details/${_id}`}><button className="btn btn-primary w-full">Details</button></Link>
-                    <Link className="w-full" to={`/home/details/${name}`}><button className="btn btn-primary w-full">Update</button></Link>
+                    <Link className="w-full" to={`/updated/${_id}`}><button className="btn btn-primary w-full">Update</button></Link>
 
                 </div>
             </div>

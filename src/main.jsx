@@ -9,6 +9,9 @@ import MainLayout from './layout/MainLayout';
 import AddProduct from './pages/AddProduct/AddProduct';
 import Home from './pages/Home/Home';
 import BrandPage from './pages/BrandPage/BrandPage';
+import Details from './pages/Details/Details';
+import AddToCart from './pages/AddToCart/AddToCart';
+import Updated from './pages/Updated/Updated';
 
 
 const router = createBrowserRouter([
@@ -38,7 +41,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/home/details/:brand',
-        element: <p>fjglsj</p>
+        element: <Details></Details>
+      },
+      {
+        path: '/cart',
+        element: <AddToCart></AddToCart>
+      },
+      {
+        path: '/updated/:id',
+        element: <Updated></Updated>
       },
     ]
   },
