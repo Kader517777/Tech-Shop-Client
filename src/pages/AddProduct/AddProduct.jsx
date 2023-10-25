@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 
 
 const AddProduct = () => {
@@ -16,7 +17,7 @@ const AddProduct = () => {
 
         const products = { name, image, brandName, catagoryName, price, Rating, shortDescription, detailsDescription }
 
-        fetch('https://tech-shope-server-c8xh3rl03-shakhabdulkader2020-gmailcom.vercel.app/products', {
+        fetch('https://tech-shope-server-c46lpj1kq-shakhabdulkader2020-gmailcom.vercel.app/products', {
             method: "POST",
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
@@ -24,7 +25,11 @@ const AddProduct = () => {
             body: JSON.stringify(products)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                if (data.insertedId) {
+                    toast.success('Successfully Added');
+                }
+            })
     }
 
 

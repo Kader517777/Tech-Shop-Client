@@ -46,11 +46,10 @@ const AuthContext = ({ children }) => {
         signOut(auth).then(() => {
             setUser(null);
             setLoader(false)
-        }).catch((error) => {
-            console.log(error);
+        }).catch(() => {
+
         });
     }
-    console.log(user);
     const authInfo = {
         user,
         loader,

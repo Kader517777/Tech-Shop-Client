@@ -7,9 +7,8 @@ const AddToCart = () => {
     const { user } = useContext(userContext)
     const userEmail = user?.auth?.currentUser?.email;
     const [cartProduct, setCartProduct] = useState(null);
-    console.log(cartProduct);
     useEffect(() => {
-        fetch('http://localhost:3600/cart')
+        fetch('https://tech-shope-server-c46lpj1kq-shakhabdulkader2020-gmailcom.vercel.app/cart')
             .then(res => res.json())
             .then(data => {
                 const filterUserCart = data?.filter(item => item.userEmail === userEmail)
@@ -18,15 +17,13 @@ const AddToCart = () => {
     }, [userEmail])
 
     const handleProductDelete = (id) => {
-        fetch(`https://tech-shope-server-c8xh3rl03-shakhabdulkader2020-gmailcom.vercel.app/delete/${id}`, {
+        fetch(`https://tech-shope-server-c46lpj1kq-shakhabdulkader2020-gmailcom.vercel.app/delete/${id}`, {
             method: "Delete",
         })
             .then(res => res.json())
             .then(data => {
                 if (data.deletedCount > 0) {
-                    console.log(cartProduct);
                     const filter = cartProduct?.filter(item => item._id != id && item.userEmail == userEmail);
-                    console.log(filter);
                     setCartProduct(filter);
                 }
             })

@@ -3,7 +3,6 @@ import { useState } from "react";
 const Carts = ({ product, handleProductDelete }) => {
 
     const { name, image, brandName, price, _id } = product;
-    console.log(product);
 
 
     return (

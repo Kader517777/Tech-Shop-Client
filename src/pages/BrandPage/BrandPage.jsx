@@ -7,9 +7,8 @@ const BrandPage = () => {
     const [products, setProduct] = useState(null);
 
     const brandProducts = products?.filter(item => item.brandName === brandName.brand);
-    console.log(brandName);
     useEffect(() => {
-        fetch('http://localhost:3600/products')
+        fetch('https://tech-shope-server-c46lpj1kq-shakhabdulkader2020-gmailcom.vercel.app/products')
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [])
@@ -42,9 +41,10 @@ const BrandPage = () => {
                     </div>
                 </div>
             </div>
-            <div className=" grid grid-cols-1  lg:grid-cols-3 md:grid-cols-2 gap-5 mb-8 mt-8">
-                {
+            <div className={brandProducts?.length > 0 ? " grid grid-cols-1  lg:grid-cols-3 md:grid-cols-2 gap-5 mb-8 mt-8" : "flex "}>
+                {brandProducts?.length > 0 ?
                     brandProducts?.map(brandProduct => <BrandProduct key={brandProduct._id} brandProduct={brandProduct}></BrandProduct>)
+                    : <h1 className="flex justify-center text-4xl font-bold text-center items-center text-yellow-900 w-full mt-9">There is no product of {brandName?.brand} Brand.</h1>
                 }
             </div>
         </div>

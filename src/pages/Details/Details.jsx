@@ -10,8 +10,6 @@ const Details = () => {
     const [detailsProduct, setDetailsProduct] = useState(null);
 
     const product = detailsProduct?.find(item => item?._id == id?.brand);
-
-    console.log(product?.image);
     useEffect(() => {
         fetch('https://tech-shope-server-c8xh3rl03-shakhabdulkader2020-gmailcom.vercel.app/products')
             .then(res => res.json())
@@ -25,7 +23,7 @@ const Details = () => {
         const cardInfo = {
             _id, name, image, brandName, catagoryName, price, userEmail
         };
-        fetch('https://tech-shope-server-c8xh3rl03-shakhabdulkader2020-gmailcom.vercel.app/cart', {
+        fetch('https://tech-shope-server-c46lpj1kq-shakhabdulkader2020-gmailcom.vercel.app/cart', {
             method: "POST",
             headers: {
                 "Content-type": "application/json; charset=UTF-8"

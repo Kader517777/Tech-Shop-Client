@@ -16,6 +16,7 @@ import AuthContext from './Provider/AuthContext';
 import Login from './pages/Login/Login';
 import Resigtration from './pages/Resigtration/Resigtration';
 import PrivateRoute from './Route/PrivateRoute';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
 
 
 const router = createBrowserRouter([
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>
+      },
+      {
+        path: '*',
+        element: <ErrorPage></ErrorPage>
       },
       {
         path: 'addproduct',

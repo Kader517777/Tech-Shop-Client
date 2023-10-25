@@ -7,27 +7,41 @@ const Navber = () => {
     const userName = user?.auth?.currentUser?.displayName;
     const email = user?.auth?.currentUser?.email;
     const photoURL = user?.auth?.currentUser?.photoURL;
-    console.log(userName);
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 shadow-md">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a>Item 1</a></li>
-                        <li>
-                            <a>Parent</a>
-                            <ul className="p-2">
-                                <li><a>Submenu 1</a></li>
-                                <li><a>Submenu 2</a></li>
-                            </ul>
-                        </li>
-                        <li><a>Item 3</a></li>
+                        <li><NavLink
+                            to="/"
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending text-2xl font-bold" : isActive ? "active text-2xl font-bold" : " text-2xl font-bold"
+                            }
+                        >
+                            Home
+                        </NavLink></li>
+                        <li><NavLink
+                            to="/addproduct"
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending text-2xl font-bold" : isActive ? "active text-2xl font-bold" : "text-2xl font-bold"
+                            }
+                        >
+                            Add Product
+                        </NavLink></li>
+                        <li><NavLink
+                            to="/cart"
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending text-2xl font-bold" : isActive ? "active text-2xl font-bold" : "text-2xl font-bold"
+                            }
+                        >
+                            My Cart
+                        </NavLink></li>
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                <p className="flex items-center text-xl"><img className="w-8 h-6 mr-2 ml-0 md:ml-6" src="https://i.ibb.co/wsX8KKS/Black-White-Minimalist-Logo-1.png" alt="" />Tech-Shop</p>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

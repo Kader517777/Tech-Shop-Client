@@ -6,7 +6,7 @@ const Updated = () => {
     const [detailsProduct, setDetailsProduct] = useState(null);
     const find = detailsProduct?.find(item => item._id === id.id);
     useEffect(() => {
-        fetch('https://tech-shope-server-c8xh3rl03-shakhabdulkader2020-gmailcom.vercel.app/products')
+        fetch('https://tech-shope-server-c46lpj1kq-shakhabdulkader2020-gmailcom.vercel.app/products')
             .then(res => res.json())
             .then(data => setDetailsProduct(data))
     }, [])
